@@ -140,19 +140,31 @@ app.post("/deletecomment",function (req,res) {
 
 app.post("/updatefirst",function (req,res) {
   var id=req.body.button;
-  res.render("update",{id: id});
+  var listname=req.body.input;
+  res.render("update",{id: id, listTitle: listname});
 });
 
 app.post("/update",function (req,res) {
   var id=req.body.button;
   var task=req.body.updatedtask;
+  var listname=req.body.input;
   console.log(id);
   console.log(task);
-  Task.updateOne({_id: id}, {task: task},function (err) {
+  if(listname==="today")
+  {
+  Task.findOneAndUpdate({_id: id}, {$set:{task:task}},function (err) {
     if(err)
     console.log(err);
   });
   res.redirect("/");
+}
+else {
+  Customlist.findOneAndUpdate({name: listname, 'items._id': id}, {$set: {'items.$.task': task}}, function(err){
+    if(err)
+    console.log(err);
+  });
+  res.redirect("/"+listname);
+}
 });
 
 app.get("/:custom",function (req,res) {

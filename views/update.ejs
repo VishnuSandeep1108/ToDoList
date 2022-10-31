@@ -1,0 +1,20 @@
+<%-include("header")-%>
+</head>
+
+  <body>
+      <%-include("navbar")%>
+
+      <div class="searchbar"></div>
+
+      <div class="contents">
+        <form class="" action="/update" method="post">
+          <div class="form">
+            <h1 class="updatehead">Update Task!</h1>
+            <input class="updateinput" type="text" name="updatedtask" value="" placeholder="   Enter Updated Task!">
+            <button class="updatetasksubmit" type="submit" value=<%=id%> name="button"><div class="updatetxt">Update!</div></button>
+          </div>
+        </form>
+        
+      </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row headrow">
+      <div class="col-lg-2">#</div>
+      <div class="col-lg-6 col-task">Task</div>
+      <div class="col-lg-4 col-status">Status</div>
+  </div>
+
+      <%listitems.forEach(function(item){%>
+        <!-- <hr> -->
+        <div class=" tablerow row">
+        <div class="col-lg-2"><form class="" action="/delete" method="post">
+        <input class="checkbox" type="checkbox" name="checkbox" value=<%=item._id%> onchange=this.form.submit()>
+        <input type="hidden" name="input" value=<%=listTitle%>>
+      </form></div>
+    <div class="col-lg-6 itemtask">
+      <div class="row">
+        <div class="col-lg-10 innertask">
+          <%= item.task %>
+        </div>
+        <div class="col-lg-2 innerbtn">
+          <form class="" action="/updatefirst" method="post">
+            <button class="updatetaskbutton" type="submit" name="button" value=<%=item._id%> onchange=this.form.submit()><box-icon name='edit-alt'></box-icon></button>
+
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+      <div class="col-lg-4"><div class="inprogress">In Progress</div></div>
+    </div>
+      <%});%>
+      <div id="addtask" class=" lastrow row">
+        <div class="col">
+          <form class="" action="/addtask" method="post">
+              <input class="input" type="text" name="newtask" value="" placeholder="   Enter the Task!">
+              <button class="addtaskbutton" type="submit" value=<%=listTitle%> name="button"><div class="plus">+</div></button>
+          </form>
+        </div>
+
+      </div>
+      <!-- <hr> -->
+</div>
+
+<!-- onClick -->

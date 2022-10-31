@@ -1,0 +1,48 @@
+<%-include("header")-%>
+  <style media="screen">
+    .ct{
+      background-color: rgb(57, 218, 207);
+    }
+    .ict{
+      color: #06283D;
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+<body>
+  <%-include("navbar")%>
+
+  <div class="searchbar"></div>
+
+  <div class="contents">
+    <h4 class="date"><%=date%></h4>
+    <div class="comments">
+      <%comments.forEach(function(comment){%>
+          <div class="row">
+            <div class="col-sm-3">
+              <form class="" action="/deletecomment" method="post">
+                <input class="checkbox" type="checkbox" name="checkbox" value=<%=comment._id%> onchange=this.form.submit()>
+              </form>
+            </div>
+            <div class="col-sm-9 comm">
+              <p><%=comment.task%></p>
+            </div>
+          </div>
+      <%});%>
+    </div>
+    <div class="textbx">
+      <form class="" action="/comments" method="post">
+        <textarea name="txtarea" rows="8" cols="80"></textarea>
+        <br /><br /><button type="submit" name="button">Add!</button>
+      </form>
+    </div>
+    <%-include("footer")-%>
+    </div>
+
+</body>
+
+</html>

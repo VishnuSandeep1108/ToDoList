@@ -1,0 +1,32 @@
+<%-include("header")-%>
+  <style media="screen">
+    .tl{
+      background-color:rgb(57, 218, 207);
+    }
+    .itl{
+      color: #06283D;
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+
+
+  <%-include("navbar")-%>
+  <div class="searchbar"></div>
+
+  <div class="contents">
+
+    <div class="text">
+      <h4 class="date"><%=date%></h4>
+      <%-include("list")-%>
+    </div>
+    <%-include("footer")-%>
+  </div>
+
+</body>
+
+</html>
